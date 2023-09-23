@@ -1,0 +1,39 @@
+
+.movie-container {
+    /* background: orange; */
+    width: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 1rem;
+  }
+  
+  .movie-poster {
+    height: 500px;
+    
+    width: 100%;
+    object-fit: cover;
+  
+    /* border-radius: 17px; */
+  }
+  .movie-spec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Child selector - combinators */
+  .movie-spec > p {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .movie-summary {
+    margin-top: 0px;
+    color: #7c6e6e;
+    text-align: justify;
+  }
+  
+  .movie-details {
+    padding: 1rem;
+  }

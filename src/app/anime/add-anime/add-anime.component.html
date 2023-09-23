@@ -1,0 +1,99 @@
+<p>add-anime works!</p>
+<!-- (ngSubmit)="addMovie()" -->
+<section>
+  <form [formGroup]="movieForm" class="form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" type="text" placeholder="name" />
+      <mat-error *ngIf="name?.touched && name?.hasError('required')"
+        >Why not fill this field</mat-error
+      >
+      <mat-error *ngIf="name?.touched && name?.hasError('minlength')"
+        >Please provide full Name</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>poster</mat-label>
+      <input
+        matInput
+        formControlName="poster"
+        type="text"
+        placeholder="Ex http//"
+      />
+      <mat-error *ngIf="poster?.touched && poster?.hasError('required')"
+        >Why not fill this field</mat-error
+      >
+      <mat-error *ngIf="poster?.touched && poster?.hasError('minlength')"
+        >Please provide Full url</mat-error
+      >
+      <mat-error *ngIf="poster?.touched && poster?.hasError('pattern')"
+        >Please provide proper url format</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>rating</mat-label>
+      <input
+        matInput
+        formControlName="rating"
+        type="text"
+        placeholder="Stars"
+      />
+      <mat-error *ngIf="rating?.touched && rating?.hasError('required')"
+        >Why not fill this field</mat-error
+      >
+      <mat-error
+        *ngIf="
+          rating?.touched &&
+          (rating?.hasError('min') || rating?.hasError('max'))
+        "
+        >Why not fill this field</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Summary</mat-label>
+      <input
+        matInput
+        formControlName="summary"
+        type="text"
+        placeholder="One line story"
+      />
+      <mat-error *ngIf="summary?.touched && summary?.hasError('required')"
+        >Why not fill this field</mat-error
+      >
+      <mat-error *ngIf="summary?.touched && summary?.hasError('minlength')"
+        >Give more than 5 words</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Trailer</mat-label>
+      <input
+        matInput
+        formControlName="trailer"
+        type="text"
+        placeholder="http://"
+      />
+      <mat-error *ngIf="trailer?.touched && trailer?.hasError('required')"
+        >Why not fill this field</mat-error
+      >
+      <mat-error *ngIf="trailer?.touched && trailer?.hasError('minlength')"
+        >Please provide Full url</mat-error
+      >
+      <mat-error *ngIf="trailer?.touched && trailer?.hasError('pattern')"
+        >Please provide proper url format</mat-error
+      >
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="movieForm.invalid"
+      type="submit"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="addMovie"
+        fontIcon="add"
+      ></mat-icon>
+      {{ "add movie" | uppercase }}
+    </button>
+  </form>
+</section>

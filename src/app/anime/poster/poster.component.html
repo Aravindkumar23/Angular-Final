@@ -1,0 +1,48 @@
+<div class="movie-container">
+  <img [src]="Anime.poster" [alt]="Anime.title" class="movie-poster" />
+  <div class="movie-details">
+    <div class="movie-spec">
+      <h2 class="movie-name">
+        {{ Anime.title }}
+        <!-- <button
+                (click)="toggle()"
+                mat-icon-button
+                color="primary"
+                aria-label="Toggle Summary"
+              > -->
+        <!-- <mat-icon *ngIf="value; else moreIcon">expand_less</mat-icon>
+                <ng-template #moreIcon>
+                  <mat-icon>expand_more</mat-icon>
+                </ng-template>
+              </button>
+       -->
+        <!-- <button
+                (click)="gotoMovieDetail()"
+                mat-icon-button
+                color="primary"
+                aria-label="Toggle Summary"
+              >
+                <mat-icon>info</mat-icon>
+              </button> -->
+      </h2>
+      <p class="movie-rating">⭐{{ Anime.rating }}</p>
+    </div>
+
+    <p class="movie-summary">
+      {{ Anime.summary }}
+    </p>
+    <!-- <app-likecomponent
+            [likeCount]="movie.like"
+            [disLikeCount]="movie.dislike"
+            (updateLike)="updateLike($event)"
+            (updateDislike)="updateDislike($event)"
+          ></app-likecomponent> -->
+    <button mat-icon-button color="accent" aria-label="Edit Movie">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button mat-icon-button color="warn" aria-label="Delete Movie">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
