@@ -27,16 +27,12 @@
       </h2>
       <p class="anime-rating">⭐{{ Anime.rating }}</p>
     </div>
-
+    <p>{{ Anime.genres.join(" | ") }}</p>
+    <p>{{ Anime.languages.join(" | ") }}</p>
     <p *ngIf="value" class="anime-summary">
       {{ Anime.summary }}
     </p>
-    <!-- <app-likecomponent
-            [likeCount]="movie.like"
-            [disLikeCount]="movie.dislike"
-            (updateLike)="updateLike($event)"
-            (updateDislike)="updateDislike($event)"
-          ></app-likecomponent> -->
+
     <div class="buttonsUI">
       <div class="left">
         <app-like-dislike

@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { anime } from 'src/app/app.component';
 import { DataService } from 'src/app/data.service';
 import { debounceTime, Subject, switchMap } from 'rxjs';
+import { LANGUAGES } from '../add-anime/global';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-poster',
@@ -29,7 +32,7 @@ export class PosterComponent {
   value:boolean = true;
   LikeSubject = new Subject<number>();
   DislikeSubject = new Subject<number>();
-  constructor(private router:Router,private data:DataService){
+  constructor(private router:Router,private data:DataService,private dialog:MatDialog){
 
     this.LikeSubject.pipe(debounceTime(2000),
     switchMap(
@@ -48,11 +51,12 @@ export class PosterComponent {
   viewEdit(){
     this.router.navigate(['/anime/edit',this.Anime.id]);
   }
-  deleteAnime(){
+  performDelete(){
     this.data.deleteAnime(this.Anime.id).subscribe(()=>{
       this.removeanime.emit();
     });
   }
+  
 
   updateLikecount(count:number){
     this.LikeSubject.next(count);
@@ -69,5 +73,29 @@ export class PosterComponent {
   gotoMovieDetail(){
     this.router.navigate([`anime/details/${this.Anime.id}`])
   }
+  // getLabelLanguages(language:Array<string>) {
+    
+  //   for(const lang of language){
+  //     var langu = lang;
+  //   } 
+  //   return LANGUAGES.find((data) => data.value === langu)?.label;
+   
+  // }
+  openConfirmDialog() {
+    return this.dialog.open(DeleteDialogComponent, {
+      maxWidth: '450px',
+      data: { message: 'Are you sure you want to delete this anime?'},
+    });
+  }
 
-}
+    deleteAnime(){
+      this.openConfirmDialog()
+        .afterClosed()
+        .subscribe((confirmed: boolean) => {
+          if (confirmed) {
+            this.performDelete();
+          }
+        });
+        }
+   }
+

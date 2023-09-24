@@ -19,10 +19,15 @@ import {
   MatChipInputEvent,
   MatChipsModule,
 } from '@angular/material/chips';
+import{ MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogModule} from '@angular/material/dialog';
 import { EditAnimeComponent } from './edit-anime/edit-anime.component';
 import { LikeDislikeComponent } from './like-dislike/like-dislike.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DisplayDetailsComponent } from './display-details/display-details.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +36,14 @@ import { DisplayDetailsComponent } from './display-details/display-details.compo
     AddAnimeComponent,
     EditAnimeComponent,
     LikeDislikeComponent,
-    DisplayDetailsComponent
+    DisplayDetailsComponent,
+    DeleteDialogComponent,
+   
   ],
   imports: [
     CommonModule,
     AnimeRoutingModule,MatButtonModule,MatCardModule,MatIconModule,HttpClientModule,FormsModule,ReactiveFormsModule,
-    MatFormFieldModule,MatInputModule,MatRadioModule,MatSelectModule,MatChipsModule,MatBadgeModule
+    MatFormFieldModule,MatInputModule,MatRadioModule,MatSelectModule,MatChipsModule,MatBadgeModule,MatDialogModule,
   ]
 })
 export class AnimeModule { }
