@@ -1,23 +1,37 @@
 import { Component } from '@angular/core';
-import { DataService } from 'src/app/data.service';
-import { FormArray, FormBuilder,Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { anime } from 'src/app/app.component';
-import { LANGUAGES } from './global';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { anime } from 'src/app/app.component';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { LANGUAGES } from '../add-anime/global';
+import { DataService } from 'src/app/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-add-anime',
-  templateUrl: './add-anime.component.html',
-  styleUrls: ['./add-anime.component.css']
+  selector: 'app-edit-anime',
+  templateUrl: './edit-anime.component.html',
+  styleUrls: ['./edit-anime.component.css']
 })
-export class AddAnimeComponent {
+export class EditAnimeComponent {
+  id:string ='';
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  languages=LANGUAGES;
-  animeList:anime[];
+  languagess=LANGUAGES;
+  // anime: anime = {
+  //   id: '',
+  //   title: '',
+  //   poster: '',
+  //   rating: 0,
+  //   summary: '',
+  //   trailer: '',
+  //   censorRating:'',
+  //   like: 0,
+  //   dislike: 0,
+  //   genres:[],
+  //   languages:[]
+  // };
   movieForm =this.formBuild.group({
-    
+    id:'',
     title: ['',[Validators.required,Validators.minLength(1)]],
     poster: ['',[Validators.required,Validators.minLength(5),Validators.pattern("^http.*")]],
     rating: [0,[Validators.required,Validators.min(0),Validators.max(10)]],
@@ -31,10 +45,15 @@ export class AddAnimeComponent {
   languages:[[],Validators.required],
   
   })
- constructor(private Data:DataService,private formBuild:FormBuilder, private route:Router){
-  this.animeList = Data.animeList;
+ constructor(private Data:DataService,private formBuild:FormBuilder, private route:Router,private router:ActivatedRoute){
+  const {id} = this.router.snapshot.params;
+  this.id =id;
+
  }
-  
+  ngOnInit(){
+    //  this.Data.getanimeById(this.id).subscribe((mv)=>this.movieForm.patchValue(mv));
+     
+  }
  get title(){
   return this.movieForm?.get('title');
  }
@@ -65,24 +84,13 @@ get censorRating(){
 removeGenreName(index: number) {
   this.genre.removeAt(index);
 }
-  // addMovie(){
-  //   const newmovie: Movie ={
-  //     src:this.src,
-  //     alt:this.alt,
-  //     movietitle:this.movietitle,
-  //     moviereleaseyr:this.moviereleaseyr,
-  //     movielength:this.movielength,
-  //     category:this.category,
-  //     content:this.content,
-  //   }
-  //   this.movieService.setMovieList(newmovie);
-  // }
+  
 
 
-  addAnime(){
+  editAnime(){
     if(this.movieForm.valid){
-      const newAnime=this.movieForm.value;
-      this.Data.AddAnime(newAnime as unknown as anime).subscribe(()=>this.route.navigate(['/anime']))
+      const editAnime=this.movieForm.value;
+      this.Data.editAnime(editAnime as unknown as anime).subscribe(()=>this.route.navigate(['/anime']))
     }
   }
 }

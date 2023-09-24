@@ -1,34 +1,34 @@
-<div class="movie-container">
-  <img [src]="Anime.poster" [alt]="Anime.title" class="movie-poster" />
-  <div class="movie-details">
-    <div class="movie-spec">
-      <h2 class="movie-name">
+<div class="anime-container">
+  <img [src]="Anime.poster" [alt]="Anime.title" class="anime-poster" />
+  <div class="anime-details">
+    <div class="anime-spec">
+      <h2 class="anime-name">
         {{ Anime.title }}
-        <!-- <button
-                (click)="toggle()"
-                mat-icon-button
-                color="primary"
-                aria-label="Toggle Summary"
-              > -->
-        <!-- <mat-icon *ngIf="value; else moreIcon">expand_less</mat-icon>
-                <ng-template #moreIcon>
-                  <mat-icon>expand_more</mat-icon>
-                </ng-template>
-              </button>
-       -->
-        <!-- <button
-                (click)="gotoMovieDetail()"
-                mat-icon-button
-                color="primary"
-                aria-label="Toggle Summary"
-              >
-                <mat-icon>info</mat-icon>
-              </button> -->
+        <button
+          (click)="toggle()"
+          mat-icon-button
+          color="primary"
+          aria-label="Toggle Summary"
+        >
+          <mat-icon *ngIf="value; else moreIcon">expand_less</mat-icon>
+          <ng-template #moreIcon>
+            <mat-icon>expand_more</mat-icon>
+          </ng-template>
+        </button>
+
+        <button
+          (click)="gotoMovieDetail()"
+          mat-icon-button
+          color="primary"
+          aria-label="Toggle Summary"
+        >
+          <mat-icon>info</mat-icon>
+        </button>
       </h2>
-      <p class="movie-rating">⭐{{ Anime.rating }}</p>
+      <p class="anime-rating">⭐{{ Anime.rating }}</p>
     </div>
 
-    <p class="movie-summary">
+    <p *ngIf="value" class="anime-summary">
       {{ Anime.summary }}
     </p>
     <!-- <app-likecomponent
@@ -37,12 +37,33 @@
             (updateLike)="updateLike($event)"
             (updateDislike)="updateDislike($event)"
           ></app-likecomponent> -->
-    <button mat-icon-button color="accent" aria-label="Edit Movie">
-      <mat-icon>edit</mat-icon>
-    </button>
-
-    <button mat-icon-button color="warn" aria-label="Delete Movie">
-      <mat-icon>delete</mat-icon>
-    </button>
+    <div class="buttonsUI">
+      <div class="left">
+        <app-like-dislike
+          [like]="Anime.like"
+          [dislike]="Anime.dislike"
+          (likeCount)="updateLikecount($event)"
+          (disLikecount)="updatedisLikecount($event)"
+        ></app-like-dislike>
+      </div>
+      <div class="right">
+        <button
+          mat-icon-button
+          color="accent"
+          aria-label="Edit Movie"
+          (click)="viewEdit()"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          aria-label="Delete Movie"
+          (click)="deleteAnime()"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

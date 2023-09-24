@@ -15,15 +15,15 @@ export class DisplayComponent {
 constructor(private data:DataService){}
 
 ngOnInit(){
-// this.LoadData();
-this.getanimeList=this.data.getanimeList().
+this.LoadData();
+
+}
+LoadData(){
+  this.getanimeList=this.data.getanimeList().
   subscribe((anime)=>
   {this.animeList=anime;
   });
 }
-// LoadData(){
-  
-// }
 
 ngOnDestroy(){
   this.getanimeList.unsubscribe();

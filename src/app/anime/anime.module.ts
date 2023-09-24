@@ -11,18 +11,32 @@ import { AddAnimeComponent } from './add-anime/add-anime.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import {
+  MatChipEditInput,
+  MatChipEditedEvent,
+  MatChipInputEvent,
+  MatChipsModule,
+} from '@angular/material/chips';
+import { EditAnimeComponent } from './edit-anime/edit-anime.component';
+import { LikeDislikeComponent } from './like-dislike/like-dislike.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { DisplayDetailsComponent } from './display-details/display-details.component';
 
 @NgModule({
   declarations: [
     PosterComponent,
     DisplayComponent,
-    AddAnimeComponent
+    AddAnimeComponent,
+    EditAnimeComponent,
+    LikeDislikeComponent,
+    DisplayDetailsComponent
   ],
   imports: [
     CommonModule,
     AnimeRoutingModule,MatButtonModule,MatCardModule,MatIconModule,HttpClientModule,FormsModule,ReactiveFormsModule,
-    MatFormFieldModule,MatInputModule
+    MatFormFieldModule,MatInputModule,MatRadioModule,MatSelectModule,MatChipsModule,MatBadgeModule
   ]
 })
 export class AnimeModule { }

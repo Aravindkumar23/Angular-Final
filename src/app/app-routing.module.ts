@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'home',component:DashboardComponent},
-  {path:'',redirectTo:"/dashboard",pathMatch:"full"},
+  {path:'',redirectTo:"/home",pathMatch:"full"},
   {path:'anime',loadChildren:() => import('./anime/anime.module').then((m) => m.AnimeModule)}
 ];
 

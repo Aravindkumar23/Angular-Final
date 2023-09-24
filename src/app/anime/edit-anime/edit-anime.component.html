@@ -1,5 +1,5 @@
 <section>
-  <form [formGroup]="movieForm" (ngSubmit)="addAnime()" class="form">
+  <form [formGroup]="movieForm" (ngSubmit)="editAnime()" class="form">
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input matInput formControlName="title" type="text" placeholder="title" />
@@ -27,7 +27,7 @@
       <mat-label> <mat-icon>translate</mat-icon> Languages</mat-label>
       <mat-select formControlName="languages" multiple>
         <mat-option
-          *ngFor="let language of languages"
+          *ngFor="let language of languagess"
           [value]="language.value"
           >{{ language.label }}</mat-option
         >
@@ -133,9 +133,9 @@
       <mat-icon
         aria-hidden="false"
         aria-label="addMovie"
-        fontIcon="add"
+        fontIcon="save"
       ></mat-icon>
-      {{ "add movie" | uppercase }}
+      {{ "save" | uppercase }}
     </button>
   </form>
 </section>

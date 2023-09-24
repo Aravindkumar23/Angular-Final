@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 type anime = {
+  id:string,
   title: string,
 rating: number,
 poster: string,

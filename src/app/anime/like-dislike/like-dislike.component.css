@@ -1,0 +1,11 @@
+.counter-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  /* .user-vote-container {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    justify-items: center;
+  } */

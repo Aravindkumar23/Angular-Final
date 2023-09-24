@@ -1,0 +1,21 @@
+<section class="user-vote-container">
+  <div class="counter-container">
+    <!-- Event binding -->
+    <button
+      mat-icon-button
+      color="primary"
+      (click)="incrementLike()"
+      [matBadge]="like"
+    >
+      <mat-icon color="primary">thumb_up</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      matBadgeColor="accent"
+      (click)="incrementDislike()"
+      [matBadge]="dislike"
+    >
+      <mat-icon color="accent">thumb_down</mat-icon>
+    </button>
+  </div>
+</section>

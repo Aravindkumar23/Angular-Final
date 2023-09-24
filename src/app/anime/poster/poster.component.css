@@ -1,5 +1,5 @@
 
-.movie-container {
+.anime-container {
     /* background: orange; */
     width: 400px;
     border-radius: 16px;
@@ -8,7 +8,7 @@
     margin-top: 1rem;
   }
   
-  .movie-poster {
+  .anime-poster {
     height: 500px;
     
     width: 100%;
@@ -16,24 +16,29 @@
   
     /* border-radius: 17px; */
   }
-  .movie-spec {
+  .anime-spec {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   
   /* Child selector - combinators */
-  .movie-spec > p {
+  .anime-spec > p {
     font-size: 22px;
     font-weight: bold;
   }
   
-  .movie-summary {
+  .anime-summary {
     margin-top: 0px;
     color: #7c6e6e;
     text-align: justify;
   }
   
-  .movie-details {
+  .anime-details {
     padding: 1rem;
+  }
+  .buttonsUI{
+    display: flex;
+    justify-content: space-between;
+
   }
