@@ -29,6 +29,7 @@ export class EditAnimeComponent {
   //   genres:[],
   //   languages:[]
   // };
+
   movieForm = this.formBuild.group({
     id: '',
     title: ['', [Validators.required, Validators.minLength(1)]],
@@ -67,9 +68,9 @@ export class EditAnimeComponent {
     this.id = id;
   }
   ngOnInit() {
-    this.Data.getanimeById(this.id).subscribe((response) =>
-      this.movieForm.patchValue(response)
-    );
+    this.Data.getanimeById(this.id).subscribe((response) => {
+      this.movieForm.patchValue(response);
+    });
   }
   get title() {
     return this.movieForm?.get('title');
