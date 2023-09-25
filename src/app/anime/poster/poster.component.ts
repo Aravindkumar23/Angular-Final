@@ -29,6 +29,7 @@ export class PosterComponent {
     genres: [],
     languages: []
   }
+  Languages=LANGUAGES;
   value:boolean = true;
   LikeSubject = new Subject<number>();
   DislikeSubject = new Subject<number>();
@@ -73,19 +74,19 @@ export class PosterComponent {
   gotoMovieDetail(){
     this.router.navigate([`anime/details/${this.Anime.id}`])
   }
-  // getLabelLanguages(language:Array<string>) {
+  getLabelLanguages(language:string) {
     
-  //   for(const lang of language){
-  //     var langu = lang;
-  //   } 
-  //   return LANGUAGES.find((data) => data.value === langu)?.label;
+    
+    return LANGUAGES.find((data) => data.value === language)?.label;
    
-  // }
+  }
   openConfirmDialog() {
-    return this.dialog.open(DeleteDialogComponent, {
+    return this.dialog.open(DeleteDialogComponent,
+      {
       maxWidth: '450px',
       data: { message: 'Are you sure you want to delete this anime?'},
-    });
+    }
+    );
   }
 
     deleteAnime(){

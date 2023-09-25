@@ -42,7 +42,7 @@ export class EditAnimeComponent {
     
   censorRating:['',Validators.required],
   genres:this.formBuild.array([]),
-  languages:[[],Validators.required],
+  languages:[[""],Validators.required],
   
   })
  constructor(private Data:DataService,private formBuild:FormBuilder, private route:Router,private router:ActivatedRoute){
@@ -51,8 +51,9 @@ export class EditAnimeComponent {
 
  }
   ngOnInit(){
-    //  this.Data.getanimeById(this.id).subscribe((mv)=>this.movieForm.patchValue(mv));
-     
+     this.Data.getanimeById(this.id).subscribe((response)=>
+     this.movieForm.patchValue(response)
+     )
   }
  get title(){
   return this.movieForm?.get('title');
