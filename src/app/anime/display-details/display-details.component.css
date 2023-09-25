@@ -1,0 +1,38 @@
+.contents{
+    margin:1rem;
+    
+}
+.Title{
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+    font-size: 1.25rem;
+    font-weight: 550;
+    
+}
+.genres{
+    margin-top: 1rem;
+}
+h3{
+    margin-top: 1rem;
+    font-weight: 400;
+    
+    font-style: italic;
+}
+
+.language{
+    font-style: italic;
+}
+.anime-summary{
+    margin-top: 1rem;
+    text-align: justify;
+    width: 700px;
+    color:gray;
+}
+.flexic{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap:10px;
+}
+

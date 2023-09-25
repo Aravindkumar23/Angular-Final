@@ -1,1 +1,37 @@
+<iframe
+  width="100%"
+  height="600"
+  [src]="Anime.trailer"
+  [title]="Anime.title"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+></iframe>
+<section class="contents">
+  <div class="Title">
+    <p class="anime-name">
+      {{ Anime.title }}
+    </p>
+    <p class="anime-rating">⭐{{ Anime.rating }}</p>
+  </div>
+  <div class="flexic">
+    <mat-icon>theaters</mat-icon>
+    <p class="genres">
+      {{ Anime.genres.join(" | ") }}
+    </p>
+  </div>
+  <div class="flexic">
+    <mat-icon>g_translate</mat-icon>
+    <span
+      class="language"
+      *ngFor="let language of Anime?.languages; last as isLast"
+    >
+      {{ getLabelLanguages(language) }}
+    </span>
+  </div>
 
+  <h3>Summary</h3>
+  <p class="anime-summary">
+    {{ Anime.summary }}
+  </p>
+</section>

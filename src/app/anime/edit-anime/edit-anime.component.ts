@@ -70,6 +70,11 @@ export class EditAnimeComponent {
   ngOnInit() {
     this.Data.getanimeById(this.id).subscribe((response) => {
       this.movieForm.patchValue(response);
+      const chipsarray = response.genres;
+      for (let chipsvalue of chipsarray) {
+        this.genre.push(chipsvalue);
+        console.log(chipsvalue);
+      }
     });
   }
   get title() {
