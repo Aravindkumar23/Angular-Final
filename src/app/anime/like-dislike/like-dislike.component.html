@@ -6,6 +6,7 @@
       color="primary"
       (click)="incrementLike()"
       [matBadge]="like"
+      [matBadgeHidden]="likehidden"
     >
       <mat-icon color="primary">thumb_up</mat-icon>
     </button>
@@ -14,8 +15,9 @@
       matBadgeColor="accent"
       (click)="incrementDislike()"
       [matBadge]="dislike"
+      [matBadgeHidden]="dislikehidden"
     >
-      <mat-icon color="accent">thumb_down</mat-icon>
+      <mat-icon color="warn">thumb_down</mat-icon>
     </button>
   </div>
 </section>

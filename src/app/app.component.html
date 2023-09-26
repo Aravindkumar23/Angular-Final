@@ -8,12 +8,28 @@
   </head>
   <body>
     <header>
-      <mat-toolbar color="primary">
-        <button mat-button routerLink="/home">
-          <mat-icon>home</mat-icon> Home
-        </button>
-        <button mat-button routerLink="/anime">Anime</button>
-        <button mat-button routerLink="/anime/add">Add Anime</button>
+      <mat-toolbar class="mat-toolbar" color="primary">
+        <div class="buttongroup">
+          <button mat-button routerLink="/home">
+            <mat-icon>home</mat-icon> Home
+          </button>
+          <button mat-button routerLink="/anime">Anime</button>
+          <button mat-button routerLink="/anime/add">Add Anime</button>
+        </div>
+        <div class="searchDiv">
+          <!-- <input class="search" type="searchinput" placeholder="  Search" /> -->
+
+          <!-- <mat-form-field class="example-full-width">
+            <mat-label>Telephone</mat-label>
+
+            <input type="text" matInput placeholder="Search" />
+            <mat-icon matPrefix>search</mat-icon>
+          </mat-form-field> -->
+          <div class="input-box">
+            <span class="prefix"><mat-icon>search</mat-icon></span>
+            <input type="tel" placeholder="210 123 4567" />
+          </div>
+        </div>
       </mat-toolbar>
     </header>
     <router-outlet></router-outlet>
