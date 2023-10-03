@@ -1,141 +1,148 @@
 <section>
-  <form [formGroup]="movieForm" (ngSubmit)="addAnime()" class="form">
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="title" type="text" placeholder="title" />
-      <mat-error *ngIf="title?.touched && title?.hasError('required')"
-        >Why not fill this field</mat-error
-      >
-      <mat-error *ngIf="title?.touched && title?.hasError('minlength')"
-        >Please provide full Name</mat-error
-      >
-    </mat-form-field>
-
-    <h3>Censor Rating</h3>
-    <mat-radio-group
-      class="censor-group"
-      formControlName="censorRating"
-      aria-label="Select an Censor rating"
-    >
-      <mat-radio-button value="G">G</mat-radio-button>
-      <mat-radio-button value="PG">PG</mat-radio-button>
-      <mat-radio-button value="MA">MA</mat-radio-button>
-      <mat-radio-button value="R">R</mat-radio-button>
-    </mat-radio-group>
-
-    <mat-form-field>
-      <mat-label> <mat-icon>translate</mat-icon> Languages</mat-label>
-      <mat-select formControlName="languages" multiple>
-        <mat-option
-          *ngFor="let language of languages"
-          [value]="language.value"
-          >{{ language.label }}</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="example-chip-list">
-      <mat-chip-grid #chipList>
-        <mat-chip-row
-          *ngFor="let name of genre.controls; let i = index"
-          (removed)="removeGenreName(i)"
-        >
-          {{ name.value }}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip-row>
+  <h2 mat-dialog-title>Add Anime</h2>
+  <form [formGroup]="movieForm" (ngSubmit)="RefreshAdd()" class="form">
+    <mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
         <input
-          placeholder="New Genre"
-          [matChipInputFor]="chipList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          [matChipInputAddOnBlur]="true"
-          (matChipInputTokenEnd)="addGenreName($event)"
+          matInput
+          formControlName="title"
+          type="text"
+          placeholder="title"
         />
-      </mat-chip-grid>
-    </mat-form-field>
+        <mat-error *ngIf="title?.touched && title?.hasError('required')"
+          >Why not fill this field</mat-error
+        >
+        <mat-error *ngIf="title?.touched && title?.hasError('minlength')"
+          >Please provide full Name</mat-error
+        >
+      </mat-form-field>
+      <h3>Censor Rating</h3>
+      <mat-radio-group
+        class="censor-group"
+        formControlName="censorRating"
+        aria-label="Select an Censor rating"
+      >
+        <mat-radio-button value="G">G</mat-radio-button>
+        <mat-radio-button value="PG">PG</mat-radio-button>
+        <mat-radio-button value="MA">MA</mat-radio-button>
+        <mat-radio-button value="R">R</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field>
+        <mat-label> <mat-icon>translate</mat-icon> Languages</mat-label>
+        <mat-select formControlName="languages" multiple>
+          <mat-option
+            *ngFor="let language of languages"
+            [value]="language.value"
+            >{{ language.label }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-chip-list">
+        <mat-chip-grid #chipList>
+          <mat-chip-row
+            *ngFor="let name of genre.controls; let i = index"
+            (removed)="removeGenreName(i)"
+          >
+            {{ name.value }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip-row>
+          <input
+            placeholder="New Genre"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="true"
+            (matChipInputTokenEnd)="addGenreName($event)"
+          />
+        </mat-chip-grid>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>poster</mat-label>
+        <input
+          matInput
+          formControlName="poster"
+          type="text"
+          placeholder="Ex http//"
+        />
+        <mat-error *ngIf="poster?.touched && poster?.hasError('required')"
+          >Why not fill this field</mat-error
+        >
+        <mat-error *ngIf="poster?.touched && poster?.hasError('minlength')"
+          >Please provide Full url</mat-error
+        >
+        <mat-error *ngIf="poster?.touched && poster?.hasError('pattern')"
+          >Please provide proper url format</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>rating</mat-label>
+        <input
+          matInput
+          formControlName="rating"
+          type="text"
+          placeholder="Stars"
+        />
+        <mat-error *ngIf="rating?.touched && rating?.hasError('required')"
+          >Why not fill this field</mat-error
+        >
+        <mat-error
+          *ngIf="
+            rating?.touched &&
+            (rating?.hasError('min') || rating?.hasError('max'))
+          "
+          >Why not fill this field</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Summary</mat-label>
+        <input
+          matInput
+          formControlName="summary"
+          type="text"
+          placeholder="One line story"
+        />
+        <mat-error *ngIf="summary?.touched && summary?.hasError('required')"
+          >Why not fill this field</mat-error
+        >
+        <mat-error *ngIf="summary?.touched && summary?.hasError('minlength')"
+          >Give more than 5 words</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Trailer</mat-label>
+        <input
+          matInput
+          formControlName="trailer"
+          type="text"
+          placeholder="http://"
+        />
+        <mat-error *ngIf="trailer?.touched && trailer?.hasError('required')"
+          >Why not fill this field</mat-error
+        >
+        <mat-error *ngIf="trailer?.touched && trailer?.hasError('minlength')"
+          >Please provide Full url</mat-error
+        >
+        <mat-error *ngIf="trailer?.touched && trailer?.hasError('pattern')"
+          >Please provide proper url format</mat-error
+        >
+      </mat-form-field>
+    </mat-dialog-content>
 
-    <mat-form-field>
-      <mat-label>poster</mat-label>
-      <input
-        matInput
-        formControlName="poster"
-        type="text"
-        placeholder="Ex http//"
-      />
-      <mat-error *ngIf="poster?.touched && poster?.hasError('required')"
-        >Why not fill this field</mat-error
+    <mat-dialog-actions>
+      <button mat-button (click)="Cancel()">Cancel</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="movieForm.invalid"
+        type="submit"
       >
-      <mat-error *ngIf="poster?.touched && poster?.hasError('minlength')"
-        >Please provide Full url</mat-error
-      >
-      <mat-error *ngIf="poster?.touched && poster?.hasError('pattern')"
-        >Please provide proper url format</mat-error
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>rating</mat-label>
-      <input
-        matInput
-        formControlName="rating"
-        type="text"
-        placeholder="Stars"
-      />
-      <mat-error *ngIf="rating?.touched && rating?.hasError('required')"
-        >Why not fill this field</mat-error
-      >
-      <mat-error
-        *ngIf="
-          rating?.touched &&
-          (rating?.hasError('min') || rating?.hasError('max'))
-        "
-        >Why not fill this field</mat-error
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Summary</mat-label>
-      <input
-        matInput
-        formControlName="summary"
-        type="text"
-        placeholder="One line story"
-      />
-      <mat-error *ngIf="summary?.touched && summary?.hasError('required')"
-        >Why not fill this field</mat-error
-      >
-      <mat-error *ngIf="summary?.touched && summary?.hasError('minlength')"
-        >Give more than 5 words</mat-error
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Trailer</mat-label>
-      <input
-        matInput
-        formControlName="trailer"
-        type="text"
-        placeholder="http://"
-      />
-      <mat-error *ngIf="trailer?.touched && trailer?.hasError('required')"
-        >Why not fill this field</mat-error
-      >
-      <mat-error *ngIf="trailer?.touched && trailer?.hasError('minlength')"
-        >Please provide Full url</mat-error
-      >
-      <mat-error *ngIf="trailer?.touched && trailer?.hasError('pattern')"
-        >Please provide proper url format</mat-error
-      >
-    </mat-form-field>
-
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="movieForm.invalid"
-      type="submit"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="addMovie"
-        fontIcon="add"
-      ></mat-icon>
-      {{ "add movie" | uppercase }}
-    </button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="addMovie"
+          fontIcon="add"
+        ></mat-icon>
+        {{ "add movie" | uppercase }}
+      </button>
+    </mat-dialog-actions>
   </form>
 </section>

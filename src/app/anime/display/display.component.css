@@ -4,3 +4,22 @@
     gap: 60px;
     justify-content: space-evenly;
 }
+.add-button{
+    background: none;
+    /* border: 2px solid black; */
+    font-size: 2rem;
+    color: white;
+    border: none;
+    height:50px;
+    aspect-ratio: 1/1;
+    background-color: hsla(252, 100%, 50%, 0.537);
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;}
+.button{
+    display: flex;
+    justify-content: right;
+    margin: 0 auto;
+    margin-top: 13px;
+    margin-right: 44px;
+
+}

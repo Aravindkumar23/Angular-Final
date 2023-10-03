@@ -7,15 +7,14 @@ import { EditAnimeComponent } from './edit-anime/edit-anime.component';
 import { DisplayDetailsComponent } from './display-details/display-details.component';
 
 const routes: Routes = [
-  {path:'',component:DisplayComponent},
-  {path:'add',component:AddAnimeComponent},
-  {path:'edit/:id',component:EditAnimeComponent},
-  {path:'details/:id',component:DisplayDetailsComponent}
+  { path: '', component: DisplayComponent },
 
+  { path: 'edit/:id', component: EditAnimeComponent },
+  { path: 'details/:id', component: DisplayDetailsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AnimeRoutingModule { }
+export class AnimeRoutingModule {}

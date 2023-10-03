@@ -24,9 +24,14 @@
     <mat-icon>g_translate</mat-icon>
     <span
       class="language"
-      *ngFor="let language of Anime?.languages; last as isLast"
+      *ngFor="
+        let language of Anime?.languages;
+        last as isLast;
+        first as isFirst
+      "
     >
       {{ getLabelLanguages(language) }}
+      <span *ngIf="!isLast">,</span>
     </span>
   </div>
 
