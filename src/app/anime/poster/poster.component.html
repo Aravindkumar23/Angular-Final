@@ -28,8 +28,11 @@
       <p class="anime-rating">⭐{{ Anime.rating }}</p>
     </div>
     <p>{{ Anime.genres.join(" | ") }}</p>
-    <p *ngFor="let language of Anime?.languages; last as isLast">
-      {{ getLabelLanguages(language) }}
+    <p class="language">
+      <span *ngFor="let language of Anime?.languages; last as isLast">
+        {{ getLabelLanguages(language) }}
+        <span *ngIf="!isLast"> | </span>
+      </span>
     </p>
     <p *ngIf="value" class="anime-summary">
       {{ Anime.summary }}
