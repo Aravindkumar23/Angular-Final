@@ -79,6 +79,7 @@ export class AddAnimeComponent {
     if (name) {
       this.genre.push(this.formBuild.control(name));
     }
+    event.chipInput!.clear();
   }
   removeGenreName(index: number) {
     this.genre.removeAt(index);

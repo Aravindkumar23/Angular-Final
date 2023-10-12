@@ -6,6 +6,8 @@ import { debounceTime, Subject, switchMap } from 'rxjs';
 import { LANGUAGES } from '../add-anime/global';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { EditAnimeComponent } from '../edit-anime/edit-anime.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-poster',
@@ -28,6 +30,7 @@ export class PosterComponent {
     genres: [],
     languages: [],
   };
+
   Languages = LANGUAGES;
   value: boolean = true;
   LikeSubject = new Subject<number>();
@@ -35,7 +38,8 @@ export class PosterComponent {
   constructor(
     private router: Router,
     private data: DataService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackbar: MatSnackBar
   ) {
     this.LikeSubject.pipe(
       debounceTime(2000),
@@ -53,9 +57,19 @@ export class PosterComponent {
     ).subscribe();
   }
 
-  viewEdit() {
-    this.router.navigate(['/anime/edit', this.Anime.id]);
+  // viewEdit() {
+  //   this.router.navigate(['/anime/edit', this.Anime.id]);
+  // }
+  ngOnInit() {
+    // this.sendDataToService();
   }
+
+  // sendDataToService() {
+  //   for (let i = 0; i < 10; i++) {
+  //     this.idvalues.push(this.Anime.id);
+  //   }
+
+  // }
   performDelete() {
     this.data.deleteAnime(this.Anime.id).subscribe(() => {
       this.removeanime.emit();
@@ -86,14 +100,24 @@ export class PosterComponent {
       data: { message: 'Are you sure you want to delete this anime?' },
     });
   }
-
+  openEditDialog(id: any) {
+    this.data.setData(id);
+    return this.dialog.open(EditAnimeComponent, {
+      minWidth: '400px',
+      data: { posterid: id },
+    });
+  }
   deleteAnime() {
     this.openConfirmDialog()
       .afterClosed()
       .subscribe((confirmed: boolean) => {
         if (confirmed) {
           this.performDelete();
+          this.openSnackBar('Close');
         }
       });
+  }
+  openSnackBar(action: string) {
+    this.snackbar.open('Deleted Successfully', action);
   }
 }

@@ -31,6 +31,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { DisplayDetailsComponent } from './display-details/display-details.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatBadgeModule,
     MatDialogModule,
     MatSnackBarModule,
+    ShareModule,
   ],
 })
 export class AnimeModule {}

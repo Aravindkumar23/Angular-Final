@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { ShareModule } from './share/share.module';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -27,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
+    ShareModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

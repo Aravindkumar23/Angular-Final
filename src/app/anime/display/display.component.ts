@@ -17,13 +17,19 @@ export class DisplayComponent {
 
   ngOnInit() {
     this.LoadData();
+    this.loadAnimeData();
   }
+
   LoadData() {
     this.getanimeList = this.data.getanimeList().subscribe((anime) => {
       this.animeList = anime;
     });
   }
-
+  loadAnimeData() {
+    this.getanimeList = this.data.currentAnimeListt.subscribe((anime: any) => {
+      this.animeList = anime;
+    });
+  }
   ngOnDestroy() {
     this.getanimeList.unsubscribe();
   }
